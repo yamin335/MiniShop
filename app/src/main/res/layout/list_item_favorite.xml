@@ -7,7 +7,7 @@
         <import type="android.graphics.drawable.Drawable"/>
         <variable
             name="item"
-            type="com.mallzhub.customer.models.Product" />
+            type="com.mallzhub.mallowner.models.Product" />
         <variable
             name="imageUrl"
             type="String" />

@@ -16,7 +16,7 @@
 
         <variable
             name="viewModel"
-            type="com.mallzhub.customer.ui.home.ProductDetailsViewModel" />
+            type="com.mallzhub.mallowner.ui.home.ProductDetailsViewModel" />
 
         <variable
             name="name"
