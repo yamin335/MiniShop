@@ -40,11 +40,11 @@ class AllShopListFragment :
 
         allShopListAdapter = AllShopListAdapter(
             appExecutors, actionCallBack = object : ShopListAdapter.ShopListActionCallback {
-                override fun edit(item: MallMerchant) {
-
+                override fun edit(merchant: MallMerchant) {
+                    navigateTo(AllShopListFragmentDirections.actionAllShopListFragmentToShopEditFragment(merchant))
                 }
 
-                override fun inActive(item: MallMerchant) {
+                override fun deActivate(merchant: MallMerchant) {
 
                 }
 

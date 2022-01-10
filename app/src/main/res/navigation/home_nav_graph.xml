@@ -88,6 +88,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_allShopListFragment_to_shopEditFragment"
+            app:destination="@id/shopEditFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/productListFragment"
@@ -167,4 +174,13 @@
     <include app:graph="@navigation/cart_nav_graph" />
     <include app:graph="@navigation/product_details_nav_graph" />
     <include app:graph="@navigation/chat_bot_nav_graph" />
+    <fragment
+        android:id="@+id/shopEditFragment"
+        android:name="com.mallzhub.mallowner.ui.home.ShopEditFragment"
+        android:label="Edit Shop"
+        tools:layout="@layout/fragment_edit_shop">
+        <argument
+            android:name="merchant"
+            app:argType="com.mallzhub.mallowner.models.MallMerchant" />
+    </fragment>
 </navigation>

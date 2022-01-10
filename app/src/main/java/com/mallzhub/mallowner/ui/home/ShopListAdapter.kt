@@ -95,7 +95,7 @@ class ShopListAdapter(
         }
 
         menuInactive.setOnClickListener {
-            actionCallBack.inActive(item)
+            actionCallBack.deActivate(item)
             popupMenu.dismiss()
         }
 
@@ -105,7 +105,7 @@ class ShopListAdapter(
     }
 
     interface ShopListActionCallback {
-        fun edit(item: MallMerchant)
-        fun inActive(item: MallMerchant)
+        fun edit(merchant: MallMerchant)
+        fun deActivate(merchant: MallMerchant)
     }
 }

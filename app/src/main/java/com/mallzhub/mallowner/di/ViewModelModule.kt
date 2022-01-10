@@ -332,4 +332,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(GiftPointHistoryDetailsViewModel::class)
     abstract fun bindGiftPointHistoryDetailsViewModel(viewModel: GiftPointHistoryDetailsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ShopEditViewModel::class)
+    abstract fun bindShopEditViewModel(viewModel: ShopEditViewModel): ViewModel
 }

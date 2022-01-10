@@ -213,4 +213,7 @@ abstract class FragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract fun contributeGiftPointHistoryDetailsFragment(): GiftPointHistoryDetailsFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeShopEditFragment(): ShopEditFragment
 }
