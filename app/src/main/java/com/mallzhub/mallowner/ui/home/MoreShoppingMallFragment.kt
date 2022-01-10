@@ -39,7 +39,7 @@ class MoreShoppingMallFragment :
         shoppingMallListAdapter = MoreShoppingMallListAdapter(
                 appExecutors
             ) { item ->
-            navController.navigate(MoreShoppingMallFragmentDirections.actionMoreShoppingMallFragmentToAllShopListFragment(item))
+            //navController.navigate(MoreShoppingMallFragmentDirections.actionMoreShoppingMallFragmentToAllShopListFragment(item))
         }
 
         viewDataBinding.rvMoreShoppingMallList.layoutManager = StaggeredGridLayoutManager(2, OrientationHelper.VERTICAL)

@@ -9,6 +9,7 @@ import com.mallzhub.mallowner.models.payment_account_models.AddCardOrBankRespons
 import com.mallzhub.mallowner.models.payment_account_models.BankOrCardListResponse
 import com.mallzhub.mallowner.models.registration.InquiryResponse
 import com.mallzhub.mallowner.models.registration.DefaultResponse
+import com.mallzhub.mallowner.models.registration.LoginResponse
 import com.mallzhub.shop.models.order.OrderStoreResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -141,5 +142,17 @@ interface ApiService {
         @Query("page") page: Int?,
         @Body jsonObject: JsonObject
     ): Response<GiftPointsHistoryDetailsResponse>
+
+    @Headers(ContentType)
+    @POST(ApiEndPoint.SIGN_IN)
+    suspend fun signIn(
+        @Body jsonObject: JsonObject
+    ): Response<LoginResponse>
+
+    @Headers(ContentType)
+    @POST(ApiEndPoint.OWNER_MALLS)
+    suspend fun getOwnerMalls(
+        @Body jsonObject: JsonObject
+    ): Response<ShoppingMallResponse>
 
 }

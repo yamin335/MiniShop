@@ -48,6 +48,8 @@ object ApiEndPoint {
     const val PRODUCT_DETAILS = "/$API_REPO/$DIRECTORY_COMMON/{id}/product"
     const val GIFT_POINT_COLLECT = "/$API_REPO/set/com.mallzhub.mallowner/merchant/shopvisitreward"
     const val SHOP_WISE_GIFT_POINT = "/$API_REPO/get/com.mallzhub.mallowner/merchant/reward"
+    const val SIGN_IN = "/$API_REPO/login/malllogin"
+    const val OWNER_MALLS = "/$API_REPO/mallitembyowner"
 }
 
 object ResponseCodes {

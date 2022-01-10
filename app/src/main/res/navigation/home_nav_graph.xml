@@ -9,7 +9,7 @@
         tools:layout="@layout/fragment_main2"
         android:id="@+id/home2Fragment"
         android:name="com.mallzhub.mallowner.ui.home.Home2Fragment"
-        android:label="QPay" >
+        android:label="Home" >
 
         <action
             android:id="@+id/action_home2Fragment_to_exams_nav_graph"
@@ -73,7 +73,7 @@
         android:label="Shops" >
         <argument
             android:name="shoppingMall"
-            app:argType="com.mallzhub.mallowner.models.ShoppingMall" />
+            app:argType="com.mallzhub.mallowner.models.ShoppingMallResponseData" />
         <action
             android:id="@+id/action_allShopListFragment_to_shopDetailsFragment"
             app:destination="@id/shopDetailsFragment"

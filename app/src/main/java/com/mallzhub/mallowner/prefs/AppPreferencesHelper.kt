@@ -11,6 +11,7 @@ import com.google.gson.reflect.TypeToken
 import com.mallzhub.mallowner.api.ProfileInfo
 import com.mallzhub.mallowner.api.TokenInformation
 import com.mallzhub.mallowner.di.PreferenceInfo
+import com.mallzhub.mallowner.models.registration.MallOwner
 import com.mallzhub.mallowner.worker.TokenRefreshWorker
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
@@ -50,6 +51,18 @@ class AppPreferencesHelper @Inject constructor(
     override var phoneNumber by StringPreference(prefs, KEY_PHONE_NUMBER, null, true)
 
     override var accessTokenExpiresIn by LongPreference(prefs, PREF_KEY_ACCESS_TOKEN_EXPIRES_IN, 0)
+
+    override fun saveMallOwner(mallOwner: MallOwner) {
+        val jsonString = Gson().toJson(mallOwner)
+        prefs.value.edit {
+            putString(KEY_MALL_OWNER, jsonString)
+        }
+    }
+
+    override fun getMallOwner(): MallOwner {
+        val jsonString = prefs.value.getString(KEY_MALL_OWNER, "{}")
+        return Gson().fromJson(jsonString, MallOwner::class.java)
+    }
 
     override fun logoutUser() {
         prefs.value.edit {
@@ -155,6 +168,8 @@ class AppPreferencesHelper @Inject constructor(
         private const val KEY_DEVICE_NAME = "DeviceName"
         private const val KEY_DEVICE_MODEL = "DeviceModel"
         private const val KEY_IS_LOGGED_IN = "LoginStatus"
+
+        private const val KEY_MALL_OWNER= "MallOwner"
 
         private const val PREF_KEY_ACCESS_TOKEN = "PREF_KEY_ACCESS_TOKEN"
 

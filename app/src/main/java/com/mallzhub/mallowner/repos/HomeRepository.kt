@@ -1,13 +1,14 @@
 package com.mallzhub.mallowner.repos
 
+import com.google.gson.Gson
 import com.google.gson.JsonObject
+import com.google.gson.JsonParser
 import com.mallzhub.mallowner.api.ApiService
-import com.mallzhub.mallowner.models.AllMerchantResponse
-import com.mallzhub.mallowner.models.AllProductResponse
-import com.mallzhub.mallowner.models.AllShoppingMallResponse
-import com.mallzhub.mallowner.models.ProductDetailsResponse
+import com.mallzhub.mallowner.models.*
 import com.mallzhub.mallowner.models.payment_account_models.AddCardOrBankResponse
 import com.mallzhub.mallowner.models.payment_account_models.BankOrCardListResponse
+import com.mallzhub.mallowner.models.registration.LoginRequestBody
+import com.mallzhub.mallowner.models.registration.LoginResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Response
@@ -16,6 +17,14 @@ import javax.inject.Singleton
 
 @Singleton
 class HomeRepository @Inject constructor(private val apiService: ApiService) {
+
+    suspend fun getOwnerMalls(shoppingMallRequestBody: ShoppingMallRequestBody): Response<ShoppingMallResponse> {
+        val jsonString = Gson().toJson(shoppingMallRequestBody)
+        val jsonObject = JsonParser().parse(jsonString).asJsonObject
+        return withContext(Dispatchers.IO) {
+            apiService.getOwnerMalls(jsonObject)
+        }
+    }
 
     suspend fun requestBankListRepo(type:String,token:String): Response<BankOrCardListResponse> {
         return withContext(Dispatchers.IO) {

@@ -23,7 +23,7 @@ class PaymentMethodListAdapter(
     appExecutors = appExecutors,
     diffCallback = object : DiffUtil.ItemCallback<PaymentMethod>() {
         override fun areItemsTheSame(oldItem: PaymentMethod, newItem: PaymentMethod): Boolean {
-            return oldItem?.id == newItem?.id
+            return oldItem.id == newItem.id
         }
 
         @SuppressLint("DiffUtilEquals")

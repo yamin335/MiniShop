@@ -27,7 +27,7 @@ class HomeFragment : BaseFragment<HomeBinding, HomeViewModel>() {
         doctorsListAdapter = DoctorsListAdapter(appExecutors) {
             //navController.navigate(HomeFragmentDirections.actionBooksToChapterList(it))
         }
-        doctorsListAdapter.submitList(viewModel.doctorList)
+        //doctorsListAdapter.submitList(viewModel.doctorList)
 
         viewDataBinding.rvDoctorsList.adapter = doctorsListAdapter
 
@@ -35,8 +35,6 @@ class HomeFragment : BaseFragment<HomeBinding, HomeViewModel>() {
             clickQuickAccessMenuItem(it.itemId)
             true
         }
-
-
     }
 
     private fun clickQuickAccessMenuItem(navigateId: Int) {
@@ -51,5 +49,4 @@ class HomeFragment : BaseFragment<HomeBinding, HomeViewModel>() {
         }
         navController.navigate(navigateId, null, options)
     }
-
 }

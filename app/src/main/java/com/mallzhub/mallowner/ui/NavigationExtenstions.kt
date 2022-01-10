@@ -1,7 +1,9 @@
 package com.mallzhub.mallowner.ui
 
 import android.content.Intent
+import android.os.Build
 import android.util.SparseArray
+import androidx.annotation.RequiresApi
 import androidx.core.util.forEach
 import androidx.core.util.set
 import androidx.fragment.app.FragmentManager
@@ -17,6 +19,7 @@ import com.mallzhub.mallowner.R
  *
  * This sample is a workaround until the Navigation Component supports multiple back stacks.
  */
+@RequiresApi(Build.VERSION_CODES.S)
 fun BottomNavigationView.setupWithNavController(
     navGraphIds: List<Int>,
     fragmentManager: FragmentManager,

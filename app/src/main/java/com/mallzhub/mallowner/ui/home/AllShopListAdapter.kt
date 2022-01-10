@@ -11,6 +11,7 @@ import com.mallzhub.mallowner.AppExecutors
 import com.mallzhub.mallowner.R
 import com.mallzhub.mallowner.databinding.AllShopListItemBinding
 import com.mallzhub.mallowner.models.LevelWiseShops
+import com.mallzhub.mallowner.models.MallMerchant
 import com.mallzhub.mallowner.models.Merchant
 
 import com.mallzhub.mallowner.models.PaymentMethod
@@ -18,7 +19,8 @@ import com.mallzhub.mallowner.util.DataBoundListAdapter
 
 class AllShopListAdapter(
     private val appExecutors: AppExecutors,
-    private val itemCallback: ((Merchant) -> Unit)? = null
+    private val actionCallBack: ShopListAdapter.ShopListActionCallback,
+    private val itemCallback: ((MallMerchant) -> Unit)? = null
 ) : DataBoundListAdapter<LevelWiseShops, AllShopListItemBinding>(
     appExecutors = appExecutors, diffCallback = object : DiffUtil.ItemCallback<LevelWiseShops>() {
         override fun areItemsTheSame(oldItem: LevelWiseShops, newItem: LevelWiseShops): Boolean {
@@ -30,14 +32,11 @@ class AllShopListAdapter(
             oldItem: LevelWiseShops,
             newItem: LevelWiseShops
         ): Boolean {
-            return oldItem == newItem
+            return oldItem.level == newItem.level
         }
 
     }) {
-    // Properties
-    private val viewPool: RecyclerView.RecycledViewPool = RecyclerView.RecycledViewPool()
 
-    val onClicked = MutableLiveData<PaymentMethod>()
     override fun createBinding(parent: ViewGroup): AllShopListItemBinding {
         return DataBindingUtil.inflate(
             LayoutInflater.from(parent.context),
@@ -51,10 +50,8 @@ class AllShopListAdapter(
         binding.level = allShopItem.level?.name
 
         val shopListAdapter = ShopListAdapter(
-            appExecutors
-        ) { item ->
-            itemCallback?.invoke(item)
-        }
+            appExecutors, actionCallBack, itemCallback
+        )
 
         binding.rvShopList.adapter = shopListAdapter
 

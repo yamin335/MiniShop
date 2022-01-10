@@ -18,7 +18,7 @@ class ChapterListAdapter(
     appExecutors = appExecutors,
     diffCallback = object : DiffUtil.ItemCallback<Chapter>() {
         override fun areItemsTheSame(oldItem: Chapter, newItem: Chapter): Boolean {
-            return oldItem?.id == newItem?.id
+            return oldItem.id == newItem.id
         }
 
         @SuppressLint("DiffUtilEquals")

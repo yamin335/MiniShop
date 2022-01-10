@@ -17,12 +17,12 @@ android {
         }
     }*/
 
-    compileSdkVersion build_versions.target_sdk
+    compileSdkVersion 31
 
     defaultConfig {
         applicationId "com.mallzhub.mallowner"
-        minSdkVersion build_versions.min_sdk
-        targetSdkVersion build_versions.target_sdk
+        minSdkVersion 24
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
 
@@ -164,8 +164,10 @@ dependencies {
     implementation deps.work.runtime_ktx
 
     // for otp read
-    implementation deps.play_services.base
-    implementation deps.play_services.phone
+    implementation 'com.google.android.gms:play-services-base:18.0.1'
+    implementation 'com.google.android.gms:play-services-auth-api-phone:17.3.0'
+//    implementation deps.play_services.base
+//    implementation deps.play_services.phone
 
     //timber for logging
     implementation deps.timber
@@ -305,5 +307,8 @@ dependencies {
     // Barcode model
     implementation 'com.google.mlkit:barcode-scanning:16.2.0'
     implementation 'com.google.android.gms:play-services-location:16.0.0'
+
+    // Location Picker
+    //implementation 'com.adevinta.android:leku:9.1.1'
 }
 //apply plugin: 'com.google.gms.google-services'

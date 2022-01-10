@@ -10,11 +10,10 @@ import com.google.gson.Gson
 import com.mallzhub.mallowner.R
 import com.mallzhub.mallowner.api.*
 import com.mallzhub.mallowner.local_db.dao.CartDao
-import com.mallzhub.mallowner.models.AllShoppingMallResponse
-import com.mallzhub.mallowner.models.Book
-import com.mallzhub.mallowner.models.PaymentMethod
-import com.mallzhub.mallowner.models.SubBook
+import com.mallzhub.mallowner.models.*
 import com.mallzhub.mallowner.models.registration.DefaultResponse
+import com.mallzhub.mallowner.models.registration.LoginRequestBody
+import com.mallzhub.mallowner.models.registration.LoginResponse
 import com.mallzhub.mallowner.prefs.PreferencesHelper
 import com.mallzhub.mallowner.repos.HomeRepository
 import com.mallzhub.mallowner.ui.common.BaseViewModel
@@ -31,101 +30,9 @@ class HomeViewModel @Inject constructor(
     private val cartDao: CartDao
 ) : BaseViewModel(application) {
 
-    val cartItemCount: LiveData<Int> = liveData {
-        cartDao.getCartItemsCount().collect { count ->
-            emit(count)
-        }
+    val shoppingMallResponse: MutableLiveData<ShoppingMallResponse> by lazy {
+        MutableLiveData<ShoppingMallResponse>()
     }
-    // eDokanPat
-    val allShoppingMallResponse: MutableLiveData<AllShoppingMallResponse> by lazy {
-        MutableLiveData<AllShoppingMallResponse>()
-    }
-
-    val defaultResponse: MutableLiveData<DefaultResponse> = MutableLiveData()
-    val doctorList: List<Book>
-        get() = listOf(
-            Book(
-                "0",
-                "Top Rated",
-                listOf(
-                    SubBook(
-                        "1",
-                        "Angelica Hale",
-                        "Dhaka",
-                        "",
-                        R.drawable.book_1
-                    ),
-                    SubBook(
-                        "1",
-                        "Angelica Hale",
-                        "Dhaka",
-                        "",
-                        R.drawable.book_2
-                    ),
-                    SubBook(
-                        "1",
-                        "Angelica Hale",
-                        "Dhaka",
-                        "",
-                        R.drawable.book_3
-                    )
-                )
-            ),
-            Book(
-                "1",
-                "Favourites",
-                listOf(
-                    SubBook(
-                        "1",
-                        "Angelica Hale",
-                        "Dhaka",
-                        "",
-                        R.drawable.book_4
-                    ),
-                    SubBook(
-                        "1",
-                        "Angelica Hale",
-                        "Dhaka",
-                        "",
-                        R.drawable.book_13
-                    ),
-                    SubBook(
-                        "1",
-                        "Angelica Hale",
-                        "Dhaka",
-                        "",
-                        R.drawable.book_6
-                    )
-                )
-            ),
-            Book(
-                "2",
-                "Top Rated",
-                listOf(
-                    SubBook(
-                        "1",
-                        "Angelica Hale",
-                        "Dhaka",
-                        "",
-                        R.drawable.book_7
-                    ),
-                    SubBook(
-                        "1",
-                        "Angelica Hale",
-                        "Dhaka",
-                        "",
-                        R.drawable.book_8
-                    ),
-                    SubBook(
-                        "1",
-                        "Angelica Hale",
-                        "Dhaka",
-                        "",
-                        R.drawable.book_9
-                    )
-                )
-            )
-        )
 
 
     val paymentMethodList: List<PaymentMethod>
@@ -160,45 +67,7 @@ class HomeViewModel @Inject constructor(
         var descText: String
     )
 
-
-    fun requestBankList(type:String) {
-        if (checkNetworkStatus()) {
-            val handler = CoroutineExceptionHandler { _, exception ->
-                exception.printStackTrace()
-                apiCallStatus.postValue(ApiCallStatus.ERROR)
-                toastError.postValue(AppConstants.serverConnectionErrorMessage)
-            }
-
-            apiCallStatus.postValue(ApiCallStatus.LOADING)
-            Log.e("token", preferencesHelper.getAccessTokenHeader())
-            viewModelScope.launch(handler) {
-                when (val apiResponse =
-                    ApiResponse.create(repository.requestBankListRepo(type,preferencesHelper.getAccessTokenHeader()))) {
-                    is ApiSuccessResponse -> {
-                        var d=DefaultResponse(apiResponse.body.toString(), "", "", true)
-                        defaultResponse.postValue(d)
-                        apiCallStatus.postValue(ApiCallStatus.SUCCESS)
-                    }
-                    is ApiEmptyResponse -> {
-                        apiCallStatus.postValue(ApiCallStatus.EMPTY)
-                    }
-                    is ApiErrorResponse -> {
-                        Log.e("error", apiResponse.errorMessage)
-                        defaultResponse.postValue(
-                            Gson().fromJson(
-                                apiResponse.errorMessage,
-                                DefaultResponse::class.java
-                            )
-                        )
-                        apiCallStatus.postValue(ApiCallStatus.ERROR)
-                    }
-                }
-            }
-        }
-    }
-
-    // eDokanPat
-    fun getAllShoppingMallList() {
+    fun getOwnerMalls(shoppingMallRequestBody: ShoppingMallRequestBody) {
         if (checkNetworkStatus()) {
             val handler = CoroutineExceptionHandler { _, exception ->
                 exception.printStackTrace()
@@ -208,10 +77,10 @@ class HomeViewModel @Inject constructor(
 
             apiCallStatus.postValue(ApiCallStatus.LOADING)
             viewModelScope.launch(handler) {
-                when (val apiResponse = ApiResponse.create(repository.getAllMallsRepo())) {
+                when (val apiResponse = ApiResponse.create(repository.getOwnerMalls(shoppingMallRequestBody))) {
                     is ApiSuccessResponse -> {
                         apiCallStatus.postValue(ApiCallStatus.SUCCESS)
-                        allShoppingMallResponse.postValue(apiResponse.body)
+                        shoppingMallResponse.postValue(apiResponse.body)
                     }
                     is ApiEmptyResponse -> {
                         apiCallStatus.postValue(ApiCallStatus.EMPTY)

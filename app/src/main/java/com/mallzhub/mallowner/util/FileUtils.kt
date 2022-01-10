@@ -1,5 +1,6 @@
 package com.mallzhub.mallowner.util
 
+import android.annotation.SuppressLint
 import android.content.ContentUris
 import android.content.Context
 import android.graphics.Bitmap
@@ -18,6 +19,7 @@ import java.math.RoundingMode
 
 class FileUtils {
     companion object {
+        @SuppressLint("Range")
         fun getFileName(context: Context, uri: Uri): String {
             var displayName = ""
 

@@ -2,6 +2,7 @@ package com.mallzhub.mallowner.prefs
 
 import com.mallzhub.mallowner.api.ProfileInfo
 import com.mallzhub.mallowner.api.TokenInformation
+import com.mallzhub.mallowner.models.registration.MallOwner
 
 
 interface PreferencesHelper {
@@ -39,6 +40,10 @@ interface PreferencesHelper {
     var accessTokenExpiresIn: Long
 
     val isAccessTokenExpired: Boolean
+
+    fun saveMallOwner(mallOwner: MallOwner)
+
+    fun getMallOwner(): MallOwner
 
     fun getAccessTokenHeader(): String
 
