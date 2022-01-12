@@ -92,14 +92,28 @@ class HomeRepository @Inject constructor(private val apiService: ApiService) {
         }
     }
 
-    suspend fun updateShop(merchantId: Int?, lat: String, long: String, mallLevelId: String, mallId: String): Response<ShopUpdateResponse> {
+    suspend fun updateShop(merchantId: Int?, shop_name: String, user_name: String, lat: String, long: String, mallLevelId: String, mallId: String): Response<ShopUpdateResponse> {
         return withContext(Dispatchers.IO) {
             apiService.updateShop(
                 merchantId,
-                lat.toRequestBody("text/plain".toMediaTypeOrNull()),
-                long.toRequestBody("text/plain".toMediaTypeOrNull()),
-                mallLevelId.toRequestBody("text/plain".toMediaTypeOrNull()),
-                mallId.toRequestBody("text/plain".toMediaTypeOrNull()))
+                shop_name,
+                user_name,
+                lat,
+                long,
+                mallLevelId,
+                mallId)
         }
     }
+
+//    suspend fun updateShop(merchantId: Int?, shop_name: String, user_name: String, lat: String, long: String, mallLevelId: String, mallId: String): Response<ShopUpdateResponse> {
+//        return withContext(Dispatchers.IO) {
+//            apiService.updateShop(
+//                merchantId,
+//                user_name.toRequestBody("text/plain".toMediaTypeOrNull()),
+//                lat.toRequestBody("text/plain".toMediaTypeOrNull()),
+//                long.toRequestBody("text/plain".toMediaTypeOrNull()),
+//                mallLevelId.toRequestBody("text/plain".toMediaTypeOrNull()),
+//                mallId.toRequestBody("text/plain".toMediaTypeOrNull()))
+//        }
+//    }
 }

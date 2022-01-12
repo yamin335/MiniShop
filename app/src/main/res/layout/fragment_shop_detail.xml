@@ -92,7 +92,7 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="@{merchant.name}"
+                                    android:text="@{merchant.shop_name}"
                                     tools:text="Shop Name"
                                     android:textSize="18dp"
                                     android:textColor="@color/albumColorPrimary"/>
@@ -118,11 +118,11 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:orientation="horizontal"
-                                    android:gravity="center_vertical">
+                                    android:gravity="top">
                                     <ImageView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        tools:srcCompat="@drawable/ic_outline_feed_24"
+                                        android:layout_width="24dp"
+                                        android:layout_height="24dp"
+                                        app:srcCompat="@drawable/ic_outline_feed_24"
                                         app:tint="@color/textColorNormal" />
                                     <TextView
                                         android:layout_width="match_parent"
@@ -149,11 +149,11 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:orientation="horizontal"
-                                    android:gravity="center_vertical">
+                                    android:gravity="top">
                                     <ImageView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        tools:srcCompat="@drawable/ic_outline_feed_24"
+                                        android:layout_width="24dp"
+                                        android:layout_height="24dp"
+                                        app:srcCompat="@drawable/ic_outline_feed_24"
                                         app:tint="@color/textColorNormal" />
                                     <TextView
                                         android:layout_width="match_parent"
@@ -180,11 +180,11 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:orientation="horizontal"
-                                    android:gravity="center_vertical">
+                                    android:gravity="top">
                                     <ImageView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        tools:srcCompat="@drawable/ic_outline_feed_24"
+                                        android:layout_width="24dp"
+                                        android:layout_height="24dp"
+                                        app:srcCompat="@drawable/ic_outline_feed_24"
                                         app:tint="@color/textColorNormal" />
                                     <TextView
                                         android:layout_width="match_parent"

@@ -36,4 +36,4 @@ data class MallMerchants(val current_page: Int?, val data: List<MallMerchant>?, 
                          val links: List<ShoppingMallResponseLinks>?, val next_page_url: Any?, val path: String?,
                          val per_page: Int?, val prev_page_url: Any?, val to: Int?, val total: Int?) : Serializable
 
-data class ShopUpdateResponse(val lat: String?, val long: String?, val shopping_mall_level_id: String?, val shopping_mall_id: String?)
+data class ShopUpdateResponse(val lat: String?, val long: String?, val shopping_mall_level_id: String?, val shopping_mall_id: String?, val user_name: String?)

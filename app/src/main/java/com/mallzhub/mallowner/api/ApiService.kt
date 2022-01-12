@@ -161,13 +161,26 @@ interface ApiService {
         @Body jsonObject: JsonObject
     ): Response<ShoppingMallAllMerchantResponse>
 
-    @Multipart
+//    @Multipart
+//    @POST(ApiEndPoint.SHOP_UPDATE)
+//    suspend fun updateShop(
+//        @Path("merchantId") type: Int?,
+//        @Part("user_name") user_name: RequestBody,
+//        @Part("lat") lat: RequestBody,
+//        @Part("long") long: RequestBody,
+//        @Part("shopping_mall_level_id") shopping_mall_level_id: RequestBody,
+//        @Part("shopping_mall_id") shopping_mall_id: RequestBody
+//    ): Response<ShopUpdateResponse>
+
+    @FormUrlEncoded
     @POST(ApiEndPoint.SHOP_UPDATE)
     suspend fun updateShop(
         @Path("merchantId") type: Int?,
-        @Part("lat") lat: RequestBody,
-        @Part("long") long: RequestBody,
-        @Part("shopping_mall_level_id") shopping_mall_level_id: RequestBody,
-        @Part("shopping_mall_id") shopping_mall_id: RequestBody
+        @Field("shop_name") shop_name: String,
+        @Field("user_name") user_name: String,
+        @Field("lat") lat: String,
+        @Field("long") long: String,
+        @Field("shopping_mall_level_id") shopping_mall_level_id: String,
+        @Field("shopping_mall_id") shopping_mall_id: String
     ): Response<ShopUpdateResponse>
 }

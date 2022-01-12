@@ -221,11 +221,13 @@ class ShopEditFragment : BaseFragment<ShopEditFragmentBinding, ShopEditViewModel
             }
         }
 
-        viewModel.serviceName.postValue(merchant.name)
+        viewModel.serviceName.postValue(merchant.shop_name)
 
         viewDataBinding.btnUpdate.setOnClickListener {
             viewModel.updateShop(
                 merchant.id,
+                merchant.shop_name ?: "",
+                merchant.user_name ?: "",
                 viewModel.latitude.value ?: "",
                 viewModel.longitude.value ?: "",
                 merchant.shopping_mall_level_id?.toString() ?: "",

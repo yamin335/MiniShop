@@ -77,7 +77,7 @@ class ShopEditViewModel @Inject constructor(
         }
     }
 
-    fun updateShop(merchantId: Int?, lat: String, long: String, mallLevelId: String, mallId: String): LiveData<ShopUpdateResponse?> {
+    fun updateShop(merchantId: Int?, shop_name: String, user_name: String, lat: String, long: String, mallLevelId: String, mallId: String): LiveData<ShopUpdateResponse?> {
         val updateResponse = MutableLiveData<ShopUpdateResponse?>()
         if (checkNetworkStatus()) {
             val handler = CoroutineExceptionHandler { _, exception ->
@@ -88,7 +88,7 @@ class ShopEditViewModel @Inject constructor(
 
             apiCallStatus.postValue(ApiCallStatus.LOADING)
             viewModelScope.launch(handler) {
-                when (val apiResponse = ApiResponse.create(repository.updateShop(merchantId, lat, long, mallLevelId, mallId))) {
+                when (val apiResponse = ApiResponse.create(repository.updateShop(merchantId, shop_name, user_name, lat, long, mallLevelId, mallId))) {
                     is ApiSuccessResponse -> {
                         apiCallStatus.postValue(ApiCallStatus.SUCCESS)
                         updateResponse.postValue(apiResponse.body)
