@@ -70,7 +70,8 @@
     <fragment
         android:id="@+id/allShopListFragment"
         android:name="com.mallzhub.mallowner.ui.home.AllShopListFragment"
-        android:label="Shops" >
+        android:label="Shops"
+        tools:layout="@layout/fragment_all_shop_list">
         <argument
             android:name="shoppingMall"
             app:argType="com.mallzhub.mallowner.models.ShoppingMallResponseData" />
@@ -91,6 +92,13 @@
         <action
             android:id="@+id/action_allShopListFragment_to_shopEditFragment"
             app:destination="@id/shopEditFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_allShopListFragment_to_shopDetailFragment"
+            app:destination="@id/shopDetailFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -179,6 +187,15 @@
         android:name="com.mallzhub.mallowner.ui.home.ShopEditFragment"
         android:label="Edit Shop"
         tools:layout="@layout/fragment_edit_shop">
+        <argument
+            android:name="merchant"
+            app:argType="com.mallzhub.mallowner.models.MallMerchant" />
+    </fragment>
+    <fragment
+        android:id="@+id/shopDetailFragment"
+        android:name="com.mallzhub.mallowner.ui.shops.ShopDetailFragment"
+        android:label="Shop Details"
+        tools:layout="@layout/fragment_shop_detail">
         <argument
             android:name="merchant"
             app:argType="com.mallzhub.mallowner.models.MallMerchant" />

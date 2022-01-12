@@ -20,6 +20,7 @@ import com.google.android.exoplayer2.util.MimeTypes
 import com.google.android.material.tabs.TabLayoutMediator
 import com.mallzhub.mallowner.BR
 import com.mallzhub.mallowner.R
+import com.mallzhub.mallowner.databinding.ShopDetailFragmentBinding
 import com.mallzhub.mallowner.databinding.ShopDetailsFragmentBinding
 import com.mallzhub.mallowner.models.LocationData
 import com.mallzhub.mallowner.models.Product
@@ -156,11 +157,17 @@ class ShopDetailsFragment :
         }.attach()
 
         childFragmentManager.setFragmentResultListener("fromProductList", viewLifecycleOwner,
-            FragmentResultListener { _, _ -> navController.navigate(ShopDetailsFragmentDirections.actionShopDetailsFragmentToProductListFragment(args.merchant)) })
+            { _, _ ->
+                navController.navigate(
+                    ShopDetailsFragmentDirections.actionShopDetailsFragmentToProductListFragment(
+                        args.merchant
+                    )
+                )
+            })
 
         childFragmentManager.setFragmentResultListener(
             "goToProductDetails",
-            viewLifecycleOwner, FragmentResultListener { key, bundle ->
+            viewLifecycleOwner, { key, bundle ->
                 val product = bundle.getSerializable("product") as Product?
                 product?.let {
                     navController.navigate(ShopDetailsFragmentDirections.actionShopDetailsFragmentToProductDetailsNavGraph(it))

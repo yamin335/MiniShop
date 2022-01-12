@@ -38,18 +38,86 @@
             android:indeterminateTint="@color/themeColor"
             app:showLoader="@{viewModel.apiCallStatus}"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvAllShopList"
+        <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_below="@id/toolbar">
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/btnServiceType"
+                app:singleSelection="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="0dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/shop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAllCaps="false"
+                    app:rippleColor="@color/toggle_button_ripple_color"
+                    app:strokeColor="@color/toggle_button_stroke_state_colors1"
+                    android:backgroundTint="@color/toggle_button_background_state_colors1"
+                    android:textColor="@color/toggle_button_text_state_colors1"
+                    android:text="Shop"
+                    style="@style/Widget.App.Button.ToggleGroupButton"
+                    />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/others"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAllCaps="false"
+                    app:rippleColor="@color/toggle_button_ripple_color"
+                    app:strokeColor="@color/toggle_button_stroke_state_colors1"
+                    android:backgroundTint="@color/toggle_button_background_state_colors1"
+                    android:textColor="@color/toggle_button_text_state_colors1"
+                    android:text="Others"
+                    style="@style/Widget.App.Button.ToggleGroupButton"
+                    />
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/dataView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerOthers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingBottom="32dp"
+                    android:visibility="gone"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:listitem="@layout/list_item_all_shops" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerShop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingBottom="32dp"
+                    android:visibility="gone"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:listitem="@layout/list_item_all_shops" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/emptyView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/toolbar"
-            android:clipToPadding="false"
-            android:paddingBottom="32dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/list_item_all_shops" />
+            android:text="No Shop Found"
+            android:textSize="22sp"
+            android:layout_centerInParent="true"/>
     </RelativeLayout>
 </layout>

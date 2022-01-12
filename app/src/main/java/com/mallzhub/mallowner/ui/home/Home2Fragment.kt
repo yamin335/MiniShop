@@ -96,7 +96,7 @@ class Home2Fragment : BaseFragment<Home2Binding, HomeViewModel>() {
             viewDataBinding.sliderLayout.addSlider(slide)
         }
 
-        viewModel.shoppingMallResponse.observe(viewLifecycleOwner, Observer { response ->
+        viewModel.shoppingMallResponse.observe(viewLifecycleOwner, { response ->
             val malls = ArrayList<ShoppingMall>()
             response?.data?.mall?.let { mall ->
                 malls.add(mall)

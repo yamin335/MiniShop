@@ -34,6 +34,7 @@ import com.mallzhub.mallowner.ui.registration.RegistrationViewModel
 import com.mallzhub.mallowner.ui.settings.SettingsViewModel
 import com.mallzhub.mallowner.ui.setup.SetupViewModel
 import com.mallzhub.mallowner.ui.setup_complete.SetupCompleteViewModel
+import com.mallzhub.mallowner.ui.shops.ShopDetailViewModel
 import com.mallzhub.mallowner.ui.shops.ShopDetailsContactUsViewModel
 import com.mallzhub.mallowner.ui.shops.ShopDetailsViewModel
 import com.mallzhub.mallowner.ui.splash.SplashViewModel
@@ -337,4 +338,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(ShopEditViewModel::class)
     abstract fun bindShopEditViewModel(viewModel: ShopEditViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ShopDetailViewModel::class)
+    abstract fun bindShopDetailViewModel(viewModel: ShopDetailViewModel): ViewModel
 }

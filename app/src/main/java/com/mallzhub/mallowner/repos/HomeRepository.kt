@@ -7,10 +7,13 @@ import com.mallzhub.mallowner.api.ApiService
 import com.mallzhub.mallowner.models.*
 import com.mallzhub.mallowner.models.payment_account_models.AddCardOrBankResponse
 import com.mallzhub.mallowner.models.payment_account_models.BankOrCardListResponse
+import com.mallzhub.mallowner.models.registration.InquiryResponse
 import com.mallzhub.mallowner.models.registration.LoginRequestBody
 import com.mallzhub.mallowner.models.registration.LoginResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Response
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -23,6 +26,14 @@ class HomeRepository @Inject constructor(private val apiService: ApiService) {
         val jsonObject = JsonParser().parse(jsonString).asJsonObject
         return withContext(Dispatchers.IO) {
             apiService.getOwnerMalls(jsonObject)
+        }
+    }
+
+    suspend fun getOwnerMallAllMerchants(shoppingMallRequestBody: ShoppingMallRequestBody): Response<ShoppingMallAllMerchantResponse> {
+        val jsonString = Gson().toJson(shoppingMallRequestBody)
+        val jsonObject = JsonParser().parse(jsonString).asJsonObject
+        return withContext(Dispatchers.IO) {
+            apiService.getOwnerMallAllMerchants(jsonObject)
         }
     }
 
@@ -78,6 +89,17 @@ class HomeRepository @Inject constructor(private val apiService: ApiService) {
     suspend fun getProductDetailsRepo(id: Int?): Response<ProductDetailsResponse> {
         return withContext(Dispatchers.IO) {
             apiService.getProductDetails(id)
+        }
+    }
+
+    suspend fun updateShop(merchantId: Int?, lat: String, long: String, mallLevelId: String, mallId: String): Response<ShopUpdateResponse> {
+        return withContext(Dispatchers.IO) {
+            apiService.updateShop(
+                merchantId,
+                lat.toRequestBody("text/plain".toMediaTypeOrNull()),
+                long.toRequestBody("text/plain".toMediaTypeOrNull()),
+                mallLevelId.toRequestBody("text/plain".toMediaTypeOrNull()),
+                mallId.toRequestBody("text/plain".toMediaTypeOrNull()))
         }
     }
 }

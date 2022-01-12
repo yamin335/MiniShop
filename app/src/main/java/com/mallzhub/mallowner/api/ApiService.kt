@@ -155,4 +155,19 @@ interface ApiService {
         @Body jsonObject: JsonObject
     ): Response<ShoppingMallResponse>
 
+    @Headers(ContentType)
+    @POST(ApiEndPoint.OWNER_MALLS)
+    suspend fun getOwnerMallAllMerchants(
+        @Body jsonObject: JsonObject
+    ): Response<ShoppingMallAllMerchantResponse>
+
+    @Multipart
+    @POST(ApiEndPoint.SHOP_UPDATE)
+    suspend fun updateShop(
+        @Path("merchantId") type: Int?,
+        @Part("lat") lat: RequestBody,
+        @Part("long") long: RequestBody,
+        @Part("shopping_mall_level_id") shopping_mall_level_id: RequestBody,
+        @Part("shopping_mall_id") shopping_mall_id: RequestBody
+    ): Response<ShopUpdateResponse>
 }

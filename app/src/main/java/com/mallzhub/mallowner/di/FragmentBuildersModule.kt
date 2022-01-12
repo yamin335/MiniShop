@@ -34,6 +34,7 @@ import com.mallzhub.mallowner.ui.order.OrderListFragment
 import com.mallzhub.mallowner.ui.order.OrderTrackHistoryFragment
 import com.mallzhub.mallowner.ui.otp_signin.OtpSignInFragment
 import com.mallzhub.mallowner.ui.pin_number.PinNumberFragment
+import com.mallzhub.mallowner.ui.shops.ShopDetailFragment
 import com.mallzhub.mallowner.ui.shops.ShopDetailsContactUsFragment
 import com.mallzhub.mallowner.ui.shops.ShopDetailsFragment
 import com.mallzhub.mallowner.ui.shops.ShopDetailsProductListFragment
@@ -216,4 +217,7 @@ abstract class FragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract fun contributeShopEditFragment(): ShopEditFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeShopDetailFragment(): ShopDetailFragment
 }

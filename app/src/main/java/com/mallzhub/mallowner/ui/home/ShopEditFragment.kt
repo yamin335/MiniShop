@@ -10,7 +10,10 @@ import android.widget.ArrayAdapter
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
+import com.adevinta.leku.LATITUDE
+import com.adevinta.leku.LONGITUDE
 import com.adevinta.leku.LocationPickerActivity
 import com.adevinta.leku.locale.SearchZoneRect
 import com.bumptech.glide.Glide
@@ -20,6 +23,7 @@ import com.mallzhub.mallowner.R
 import com.mallzhub.mallowner.databinding.ShopEditFragmentBinding
 import com.mallzhub.mallowner.models.ShoppingMallLevel
 import com.mallzhub.mallowner.ui.common.BaseFragment
+import com.mallzhub.mallowner.util.showSuccessToast
 import java.io.File
 
 class ShopEditFragment : BaseFragment<ShopEditFragmentBinding, ShopEditViewModel>() {
@@ -36,7 +40,7 @@ class ShopEditFragment : BaseFragment<ShopEditFragmentBinding, ShopEditViewModel
     var malls = arrayOf("Select Mall")
     var levels = arrayOf("Select Level")
     var mallLevels = ArrayList<ShoppingMallLevel>()
-    var serviceTypes = arrayOf("Select Service", "Shop", "Location", "Mosjid", "Lift", "Exit", "Toilet", "Fire Exit")
+    var serviceTypes = arrayOf("Select Service", "Shop", "Location", "Moshjid", "Lift", "Exit", "Toilet", "Fire Exit")
 
     lateinit var locationResultListener: ActivityResultLauncher<Intent>
 
@@ -44,19 +48,30 @@ class ShopEditFragment : BaseFragment<ShopEditFragmentBinding, ShopEditViewModel
         super.onViewCreated(view, savedInstanceState)
         registerToolbar(viewDataBinding.toolbar)
 
+        val merchant = args.merchant
+
+        viewModel.latitude.postValue(merchant.lat?.toString())
+        viewModel.longitude.postValue(merchant.long?.toString())
+
         locationResultListener = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode != Activity.RESULT_OK && result.data != null ) return@registerForActivityResult
+            val latitude = result.data?.getDoubleExtra(LATITUDE, 0.0)
+            val longitude = result.data?.getDoubleExtra(LONGITUDE, 0.0)
+            viewModel.latitude.postValue(latitude.toString())
+            viewModel.longitude.postValue(longitude.toString())
         }
 
         viewDataBinding.btnFindLocation.setOnClickListener {
+            val lat = viewModel.latitude.value?.toDouble() ?: 23.81376
+            val long = viewModel.longitude.value?.toDouble() ?: 90.42411
             val locationPickerIntent = LocationPickerActivity.Builder()
-                .withLocation(23.6850, 90.3563)
+                .withLocation(lat, long)
                 .withGeolocApiKey("AIzaSyAcDOA5dMt1SMMgMysGT5BczEHRBmqJdyE")
-                .withSearchZone("es_ES")
-                .withSearchZone(SearchZoneRect(LatLng(26.525467, -18.910366), LatLng(43.906271, 5.394197)))
+                //.withSearchZone("es_ES")
+                //.withSearchZone(SearchZoneRect(LatLng(26.525467, -18.910366), LatLng(43.906271, 5.394197)))
                 .withDefaultLocaleSearchZone()
                 .shouldReturnOkOnBackPressed()
-                .withStreetHidden()
+                //.withStreetHidden()
                 //.withCityHidden()
                 //.withZipCodeHidden()
                 //.withSatelliteViewHidden()
@@ -69,7 +84,6 @@ class ShopEditFragment : BaseFragment<ShopEditFragmentBinding, ShopEditViewModel
             locationResultListener.launch(locationPickerIntent)
         }
 
-        val merchant = args.merchant
         viewDataBinding.toolbar.title = merchant.name
 
         merchant.shopping_mall?.let {
@@ -191,7 +205,7 @@ class ShopEditFragment : BaseFragment<ShopEditFragmentBinding, ShopEditViewModel
         }
 
         merchant.shopping_mall?.levels?.let {
-            val level = merchant.shopping_mall.level ?: 0
+            val level = merchant.shopping_mall_level_id ?: 0
             mallLevels.forEachIndexed { index, value ->
                 if (level == value.id) {
                     viewDataBinding.spinnerMallLevel.setSelection(index + 1)
@@ -199,17 +213,29 @@ class ShopEditFragment : BaseFragment<ShopEditFragmentBinding, ShopEditViewModel
             }
         }
 
-        merchant.name?.let {
+        merchant.type?.let {
             serviceTypes.forEachIndexed { index, value ->
-                if (it == value) {
+                if (it.equals(value, true)) {
                     viewDataBinding.spinnerServiceType.setSelection(index)
                 }
             }
-
-            viewModel.serviceName.postValue(it)
         }
 
-        viewModel.latitude.postValue(merchant.lat?.toString())
-        viewModel.longitude.postValue(merchant.long?.toString())
+        viewModel.serviceName.postValue(merchant.name)
+
+        viewDataBinding.btnUpdate.setOnClickListener {
+            viewModel.updateShop(
+                merchant.id,
+                viewModel.latitude.value ?: "",
+                viewModel.longitude.value ?: "",
+                merchant.shopping_mall_level_id?.toString() ?: "",
+                merchant.shopping_mall_id?.toString() ?: ""
+            ).observe(viewLifecycleOwner, { response ->
+                if (response != null) {
+                    showSuccessToast(requireContext(), "Successfully Updated!")
+                    navController.popBackStack()
+                }
+            })
+        }
     }
 }

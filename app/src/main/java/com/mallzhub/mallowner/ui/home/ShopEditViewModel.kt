@@ -5,10 +5,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
+import com.google.gson.Gson
 import com.mallzhub.mallowner.api.*
 import com.mallzhub.mallowner.local_db.dao.CartDao
 import com.mallzhub.mallowner.models.AllMerchantResponse
+import com.mallzhub.mallowner.models.ShopUpdateResponse
 import com.mallzhub.mallowner.models.ShoppingMallLevel
+import com.mallzhub.mallowner.models.registration.InquiryResponse
 import com.mallzhub.mallowner.repos.HomeRepository
 import com.mallzhub.mallowner.ui.common.BaseViewModel
 import com.mallzhub.mallowner.util.AppConstants
@@ -72,5 +75,33 @@ class ShopEditViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    fun updateShop(merchantId: Int?, lat: String, long: String, mallLevelId: String, mallId: String): LiveData<ShopUpdateResponse?> {
+        val updateResponse = MutableLiveData<ShopUpdateResponse?>()
+        if (checkNetworkStatus()) {
+            val handler = CoroutineExceptionHandler { _, exception ->
+                exception.printStackTrace()
+                apiCallStatus.postValue(ApiCallStatus.ERROR)
+                toastError.postValue(AppConstants.serverConnectionErrorMessage)
+            }
+
+            apiCallStatus.postValue(ApiCallStatus.LOADING)
+            viewModelScope.launch(handler) {
+                when (val apiResponse = ApiResponse.create(repository.updateShop(merchantId, lat, long, mallLevelId, mallId))) {
+                    is ApiSuccessResponse -> {
+                        apiCallStatus.postValue(ApiCallStatus.SUCCESS)
+                        updateResponse.postValue(apiResponse.body)
+                    }
+                    is ApiEmptyResponse -> {
+                        apiCallStatus.postValue(ApiCallStatus.EMPTY)
+                    }
+                    is ApiErrorResponse -> {
+                        apiCallStatus.postValue(ApiCallStatus.ERROR)
+                    }
+                }
+            }
+        }
+        return updateResponse
     }
 }
