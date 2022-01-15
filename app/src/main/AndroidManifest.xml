@@ -65,6 +65,10 @@
 
         </activity>
 
+        <!--mqtt service-->
+
+        <service android:name="org.eclipse.paho.android.service.MqttService" />
+
         <activity
             android:name="com.adevinta.leku.LocationPickerActivity"
             android:label="@string/leku_title_activity_location_picker"

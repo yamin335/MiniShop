@@ -23,6 +23,7 @@ import com.mallzhub.mallowner.ui.LogoutHandlerCallback
 import com.mallzhub.mallowner.ui.NavDrawerHandlerCallback
 import com.mallzhub.mallowner.ui.common.BaseFragment
 import com.mallzhub.mallowner.ui.login.SliderView
+import com.mallzhub.mallowner.ui.mall_iot.MallIOTFragmentFragment
 
 class Home2Fragment : BaseFragment<Home2Binding, HomeViewModel>() {
     override val bindingVariable: Int
@@ -98,6 +99,7 @@ class Home2Fragment : BaseFragment<Home2Binding, HomeViewModel>() {
 
         viewModel.shoppingMallResponse.observe(viewLifecycleOwner, { response ->
             val malls = ArrayList<ShoppingMall>()
+            MallIOTFragmentFragment.shoppingMall = response?.data
             response?.data?.mall?.let { mall ->
                 malls.add(mall)
             }

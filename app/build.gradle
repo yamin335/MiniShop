@@ -316,5 +316,9 @@ dependencies {
     }
 
     implementation 'com.google.android.gms:play-services-maps:18.0.2'
+
+    // Paho dependencies
+    implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.2'
+    implementation 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
 }
 //apply plugin: 'com.google.gms.google-services'

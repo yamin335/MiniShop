@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data class="Home2Binding">
+    <data class="MallIOTFragmentBinding">
         <variable
             name="viewModel"
-            type="com.mallzhub.mallowner.ui.home.HomeViewModel" />
+            type="com.mallzhub.mallowner.ui.mall_iot.MallIOTViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -98,98 +98,29 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbar">
-
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerDevices"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <ProgressBar
-                        android:id="@+id/loader"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_marginTop="-7dp"
-                        android:indeterminate="true"
-                        android:indeterminateTint="@color/themeColor"
-                        app:showLoader="@{viewModel.apiCallStatus}" />
-
-                    <com.daimajia.slider.library.SliderLayout
-                        android:id="@+id/sliderLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="170dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp"
-                        app:auto_cycle="false"
-                        app:indicator_visibility="visible"
-                        app:pager_animation="Default" />
-                </RelativeLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="20dp"
-                    android:text="Your Malls"
-                    android:textColor="@color/gray" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerMall"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clipToPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="32dp"
-                    android:orientation="vertical"
-                    tools:listitem="@layout/list_item_shopping_mall"
-                    app:spanCount="3"
-                    tools:itemCount="4"/>
-
-            </LinearLayout>
+                android:clipToPadding="false"
+                android:paddingBottom="32dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/list_item_all_shops" />
         </androidx.core.widget.NestedScrollView>
 
         <TextView
             android:id="@+id/emptyView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="No Malls Found"
+            android:text="No Device Found"
             android:textSize="22sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.5" />
-
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:id="@+id/btnNewChat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="24dp"
-            android:contentDescription="Simple description"
-            android:text="AI Chatbot"
-            android:textAllCaps="false"
-            android:textColor="@color/colorWhite"
-            android:textSize="15sp"
-            app:backgroundTint="#E5525D"
-            app:icon="@drawable/icons8_chat_bubble_100"
-            app:iconPadding="8dp"
-            app:iconTint="@color/colorWhite"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

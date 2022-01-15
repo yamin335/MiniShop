@@ -54,7 +54,7 @@ class ShopEditFragment : BaseFragment<ShopEditFragmentBinding, ShopEditViewModel
         viewModel.longitude.postValue(merchant.long?.toString())
 
         locationResultListener = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode != Activity.RESULT_OK && result.data != null ) return@registerForActivityResult
+            if (result.resultCode != Activity.RESULT_OK || result.data == null ) return@registerForActivityResult
             val latitude = result.data?.getDoubleExtra(LATITUDE, 0.0)
             val longitude = result.data?.getDoubleExtra(LONGITUDE, 0.0)
             viewModel.latitude.postValue(latitude.toString())
@@ -62,8 +62,16 @@ class ShopEditFragment : BaseFragment<ShopEditFragmentBinding, ShopEditViewModel
         }
 
         viewDataBinding.btnFindLocation.setOnClickListener {
-            val lat = viewModel.latitude.value?.toDouble() ?: 23.81376
-            val long = viewModel.longitude.value?.toDouble() ?: 90.42411
+            var lat: Double
+            var long: Double
+            try {
+                lat = viewModel.latitude.value?.toDouble() ?: 23.81376
+                long = viewModel.longitude.value?.toDouble() ?: 90.42411
+            } catch (e: Exception) {
+                e.printStackTrace()
+                lat = 23.81376
+                long = 90.42411
+            }
             val locationPickerIntent = LocationPickerActivity.Builder()
                 .withLocation(lat, long)
                 .withGeolocApiKey("AIzaSyAcDOA5dMt1SMMgMysGT5BczEHRBmqJdyE")

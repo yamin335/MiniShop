@@ -16,6 +16,8 @@ import com.mallzhub.mallowner.ui.how_works.HowWorksFragment
 import com.mallzhub.mallowner.ui.info.InfoFragment
 import com.mallzhub.mallowner.ui.live_chat.BotFragment
 import com.mallzhub.mallowner.ui.login.SignInFragment
+import com.mallzhub.mallowner.ui.mall_iot.MallIOTFragmentFragment
+import com.mallzhub.mallowner.ui.mall_iot.MyDevicesFragment
 import com.mallzhub.mallowner.ui.terms_and_conditions.TermsAndConditionsFragment
 import com.mallzhub.mallowner.ui.tou.TouFragment
 import com.mallzhub.mallowner.ui.pre_on_boarding.PreOnBoardingFragment
@@ -220,4 +222,10 @@ abstract class FragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract fun contributeShopDetailFragment(): ShopDetailFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeMallIOTFragmentFragment(): MallIOTFragmentFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeMyDevicesFragment(): MyDevicesFragment
 }

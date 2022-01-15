@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mall_iot_nav"
+    app:startDestination="@id/mallIOTFragmentFragment">
+
+    <fragment
+        android:id="@+id/mallIOTFragmentFragment"
+        android:name="com.mallzhub.mallowner.ui.mall_iot.MallIOTFragmentFragment"
+        android:label="Mall Devices"
+        tools:layout="@layout/fragment_mall_iot">
+        <action
+            android:id="@+id/action_mallIOTFragmentFragment_to_myDevicesFragment"
+            app:destination="@id/myDevicesFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/myDevicesFragment"
+        android:name="com.mallzhub.mallowner.ui.mall_iot.MyDevicesFragment"
+        android:label="Shop Devices"
+        tools:layout="@layout/fragment_my_devices"/>
+</navigation>

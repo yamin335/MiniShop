@@ -504,4 +504,8 @@
     <string name="prompt_searching">Searching&#8230;</string>
     <string name="prompt_move_camera_closer">Move closer to search</string>
     <string name="service_name">Service Name <font color='red'>*</font></string>
+
+    <string name="on">ON</string>
+    <string name="off">OFF</string>
+    <string name="status_">STATUS:</string>
 </resources>

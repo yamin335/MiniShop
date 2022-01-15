@@ -21,6 +21,8 @@ import com.mallzhub.mallowner.ui.how_works.HowWorksViewModel
 import com.mallzhub.mallowner.ui.info.InfoViewModel
 import com.mallzhub.mallowner.ui.live_chat.LiveChatViewModel
 import com.mallzhub.mallowner.ui.login.SignInViewModel
+import com.mallzhub.mallowner.ui.mall_iot.MallIOTViewModel
+import com.mallzhub.mallowner.ui.mall_iot.MyDevicesViewModel
 import com.mallzhub.mallowner.ui.more.MoreViewModel
 import com.mallzhub.mallowner.ui.offer.OfferViewModel
 import com.mallzhub.mallowner.ui.order.OrderAsGuestDialogViewModel
@@ -343,4 +345,14 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(ShopDetailViewModel::class)
     abstract fun bindShopDetailViewModel(viewModel: ShopDetailViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MallIOTViewModel::class)
+    abstract fun bindMallIOTViewModel(viewModel: MallIOTViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MyDevicesViewModel::class)
+    abstract fun bindMyDevicesViewModel(viewModel: MyDevicesViewModel): ViewModel
 }
