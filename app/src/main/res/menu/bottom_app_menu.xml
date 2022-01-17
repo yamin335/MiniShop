@@ -10,13 +10,13 @@
 
     <item
         android:id="@+id/mall_iot_nav"
-        android:title="Devices"
+        android:title="IoT"
         app:showAsAction="always"
         android:icon="@drawable/ic_outline_lightbulb_24"/>
 
     <item
         android:id="@+id/wallet_nav"
-        android:title="Wallet"
+        android:title="Payments"
         app:showAsAction="always"
         android:icon="@drawable/ic_outline_account_balance_wallet_24"/>
 
