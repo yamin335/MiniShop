@@ -5,7 +5,7 @@
     <data class="HowWorksBinding">
         <variable
             name="viewModel"
-            type="com.mallzhub.mallowner.ui.how_works.HowWorksViewModel" />
+            type="com.rtchubs.talika.ui.how_works.HowWorksViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

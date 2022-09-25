@@ -9,7 +9,7 @@
             name="showBottomNav"
             type="Boolean" />
         <variable name="viewModel"
-            type="com.mallzhub.mallowner.ui.MainActivityViewModel"/>
+            type="com.rtchubs.talika.ui.MainActivityViewModel"/>
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

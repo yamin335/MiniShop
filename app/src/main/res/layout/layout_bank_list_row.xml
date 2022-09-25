@@ -6,7 +6,7 @@
         <import type="android.graphics.drawable.Drawable"/>
         <variable
             name="model"
-            type="com.mallzhub.mallowner.models.payment_account_models.BankOrCard" />
+            type="com.rtchubs.talika.models.payment_account_models.BankOrCard" />
 
         <variable
             name="imageRequestListener"

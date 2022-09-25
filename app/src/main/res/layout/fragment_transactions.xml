@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.mallzhub.mallowner.ui.transactions.TransactionsViewModel" />
+            type="com.rtchubs.talika.ui.transactions.TransactionsViewModel" />
     </data>
 
     <RelativeLayout

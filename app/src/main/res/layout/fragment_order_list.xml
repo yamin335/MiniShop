@@ -6,7 +6,7 @@
     <data class="OrderListFragmentBinding">
         <variable
             name="viewModel"
-            type="com.mallzhub.mallowner.ui.order.OrderViewModel" />
+            type="com.rtchubs.talika.ui.order.OrderViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

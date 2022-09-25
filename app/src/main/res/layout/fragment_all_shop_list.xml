@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.mallzhub.mallowner.ui.home.AllShopListViewModel" />
+            type="com.rtchubs.talika.ui.home.AllShopListViewModel" />
     </data>
 
 

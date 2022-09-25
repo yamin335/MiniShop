@@ -5,7 +5,7 @@
     <data class="ShopEditFragmentBinding">
         <variable
             name="viewModel"
-            type="com.mallzhub.mallowner.ui.home.ShopEditViewModel" />
+            type="com.rtchubs.talika.ui.home.ShopEditViewModel" />
     </data>
     <RelativeLayout
         android:layout_width="match_parent"

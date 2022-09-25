@@ -8,7 +8,7 @@
     <fragment
         tools:layout="@layout/fragment_main2"
         android:id="@+id/home2Fragment"
-        android:name="com.mallzhub.mallowner.ui.home.Home2Fragment"
+        android:name="com.rtchubs.talika.ui.home.Home2Fragment"
         android:label="Home" >
 
         <action
@@ -50,7 +50,7 @@
     <include app:graph="@navigation/exams_nav_graph" />
     <fragment
         android:id="@+id/moreShoppingMallFragment"
-        android:name="com.mallzhub.mallowner.ui.home.MoreShoppingMallFragment"
+        android:name="com.rtchubs.talika.ui.home.MoreShoppingMallFragment"
         android:label="Shopping Malls" >
         <action
             android:id="@+id/action_moreShoppingMallFragment_to_allShopListFragment"
@@ -69,12 +69,12 @@
     </fragment>
     <fragment
         android:id="@+id/allShopListFragment"
-        android:name="com.mallzhub.mallowner.ui.home.AllShopListFragment"
+        android:name="com.rtchubs.talika.ui.home.AllShopListFragment"
         android:label="Shops"
         tools:layout="@layout/fragment_all_shop_list">
         <argument
             android:name="shoppingMall"
-            app:argType="com.mallzhub.mallowner.models.ShoppingMallResponseData" />
+            app:argType="com.rtchubs.talika.models.ShoppingMallResponseData" />
         <action
             android:id="@+id/action_allShopListFragment_to_shopDetailsFragment"
             app:destination="@id/shopDetailsFragment"
@@ -106,11 +106,11 @@
     </fragment>
     <fragment
         android:id="@+id/productListFragment"
-        android:name="com.mallzhub.mallowner.ui.home.ProductListFragment"
+        android:name="com.rtchubs.talika.ui.home.ProductListFragment"
         android:label="Products" >
         <argument
             android:name="merchant"
-            app:argType="com.mallzhub.mallowner.models.Merchant" />
+            app:argType="com.rtchubs.talika.models.Merchant" />
         <action
             android:id="@+id/action_productListFragment_to_cart_nav_graph"
             app:destination="@id/cart_nav_graph"
@@ -127,17 +127,17 @@
             app:popExitAnim="@anim/slide_out_right">
             <argument
                 android:name="product"
-                app:argType="com.mallzhub.mallowner.models.Product" />
+                app:argType="com.rtchubs.talika.models.Product" />
         </action>
     </fragment>
 
     <fragment
         android:id="@+id/shopDetailsFragment"
-        android:name="com.mallzhub.mallowner.ui.shops.ShopDetailsFragment"
+        android:name="com.rtchubs.talika.ui.shops.ShopDetailsFragment"
         android:label="ShopDetailsFragment" >
         <argument
             android:name="merchant"
-            app:argType="com.mallzhub.mallowner.models.Merchant" />
+            app:argType="com.rtchubs.talika.models.Merchant" />
         <action
             android:id="@+id/action_shopDetailsFragment_to_productListFragment"
             app:destination="@id/productListFragment"
@@ -168,36 +168,36 @@
             app:popExitAnim="@anim/slide_out_right">
             <argument
                 android:name="product"
-                app:argType="com.mallzhub.mallowner.models.Product" />
+                app:argType="com.rtchubs.talika.models.Product" />
         </action>
     </fragment>
     <fragment
         android:id="@+id/ARLocationFragment"
-        android:name="com.mallzhub.mallowner.ar_location.ARLocationFragment"
+        android:name="com.rtchubs.talika.ar_location.ARLocationFragment"
         android:label="ARLocationFragment" >
         <argument
             android:name="location"
-            app:argType="com.mallzhub.mallowner.models.LocationData" />
+            app:argType="com.rtchubs.talika.models.LocationData" />
     </fragment>
     <include app:graph="@navigation/cart_nav_graph" />
     <include app:graph="@navigation/product_details_nav_graph" />
     <include app:graph="@navigation/chat_bot_nav_graph" />
     <fragment
         android:id="@+id/shopEditFragment"
-        android:name="com.mallzhub.mallowner.ui.home.ShopEditFragment"
+        android:name="com.rtchubs.talika.ui.home.ShopEditFragment"
         android:label="Edit Shop"
         tools:layout="@layout/fragment_edit_shop">
         <argument
             android:name="merchant"
-            app:argType="com.mallzhub.mallowner.models.MallMerchant" />
+            app:argType="com.rtchubs.talika.models.MallMerchant" />
     </fragment>
     <fragment
         android:id="@+id/shopDetailFragment"
-        android:name="com.mallzhub.mallowner.ui.shops.ShopDetailFragment"
+        android:name="com.rtchubs.talika.ui.shops.ShopDetailFragment"
         android:label="Shop Details"
         tools:layout="@layout/fragment_shop_detail">
         <argument
             android:name="merchant"
-            app:argType="com.mallzhub.mallowner.models.MallMerchant" />
+            app:argType="com.rtchubs.talika.models.MallMerchant" />
     </fragment>
 </navigation>

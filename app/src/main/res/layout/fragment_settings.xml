@@ -6,7 +6,7 @@
     <data class="SettingsFragmentBinding">
         <variable
             name="viewModel"
-            type="com.mallzhub.mallowner.ui.settings.SettingsViewModel" />
+            type="com.rtchubs.talika.ui.settings.SettingsViewModel" />
     </data>
 
 

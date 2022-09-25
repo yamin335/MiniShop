@@ -5,7 +5,7 @@
     <data class="OrderAsGuestDialogFragmentBinding">
         <variable
             name="viewModel"
-            type="com.mallzhub.mallowner.ui.order.OrderAsGuestDialogViewModel" />
+            type="com.rtchubs.talika.ui.order.OrderAsGuestDialogViewModel" />
     </data>
 
     <RelativeLayout

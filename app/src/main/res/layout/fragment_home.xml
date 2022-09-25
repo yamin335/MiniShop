@@ -6,7 +6,7 @@
     <data class="HomeBinding">
         <variable
             name="viewModel"
-            type="com.mallzhub.mallowner.ui.home.HomeViewModel" />
+            type="com.rtchubs.talika.ui.home.HomeViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

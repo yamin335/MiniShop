@@ -6,7 +6,7 @@
     <data class="OfferFragmentBinding">
         <variable
             name="viewModel"
-            type="com.mallzhub.mallowner.ui.offer.OfferViewModel" />
+            type="com.rtchubs.talika.ui.offer.OfferViewModel" />
     </data>
 
     <LinearLayout

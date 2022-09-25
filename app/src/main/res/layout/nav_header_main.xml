@@ -3,7 +3,7 @@
 
     <data>
         <variable name="viewModel"
-            type="com.mallzhub.mallowner.ui.MainActivityViewModel"/>
+            type="com.rtchubs.talika.ui.MainActivityViewModel"/>
     </data>
 
     <FrameLayout

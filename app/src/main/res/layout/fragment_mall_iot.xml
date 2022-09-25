@@ -6,7 +6,7 @@
     <data class="MallIOTFragmentBinding">
         <variable
             name="viewModel"
-            type="com.mallzhub.mallowner.ui.mall_iot.MallIOTViewModel" />
+            type="com.rtchubs.talika.ui.mall_iot.MallIOTViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

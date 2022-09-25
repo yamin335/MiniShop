@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.mallzhub.mallowner.ui.cart.CartViewModel" />
+            type="com.rtchubs.talika.ui.cart.CartViewModel" />
 
         <variable
             name="totalPrice"

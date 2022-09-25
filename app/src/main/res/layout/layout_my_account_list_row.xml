@@ -4,7 +4,7 @@
     <data>
         <variable
             name="model"
-            type="com.mallzhub.mallowner.models.common.MyAccount" />
+            type="com.rtchubs.talika.models.common.MyAccount" />
     </data>
 
     <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"

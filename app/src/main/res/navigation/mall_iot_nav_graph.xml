@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mallIOTFragmentFragment"
-        android:name="com.mallzhub.mallowner.ui.mall_iot.MallIOTFragmentFragment"
+        android:name="com.rtchubs.talika.ui.mall_iot.MallIOTFragmentFragment"
         android:label="Mall Devices"
         tools:layout="@layout/fragment_mall_iot">
         <action
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/myDevicesFragment"
-        android:name="com.mallzhub.mallowner.ui.mall_iot.MyDevicesFragment"
+        android:name="com.rtchubs.talika.ui.mall_iot.MyDevicesFragment"
         android:label="Shop Devices"
         tools:layout="@layout/fragment_my_devices"/>
 </navigation>

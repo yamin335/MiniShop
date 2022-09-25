@@ -7,7 +7,7 @@
         <import type="android.graphics.drawable.Drawable"/>
         <variable
             name="mall"
-            type="com.mallzhub.mallowner.models.ShoppingMall" />
+            type="com.rtchubs.talika.models.ShoppingMall" />
         <variable
             name="imageRequestListener"
             type="com.bumptech.glide.request.RequestListener&lt;Drawable>" />

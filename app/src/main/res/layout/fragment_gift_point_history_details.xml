@@ -6,7 +6,7 @@
     <data class="GiftPointHistoryDetailsFragmentBinding">
         <variable
             name="viewModel"
-            type="com.mallzhub.mallowner.ui.gift_point.GiftPointHistoryDetailsViewModel" />
+            type="com.rtchubs.talika.ui.gift_point.GiftPointHistoryDetailsViewModel" />
         <variable
             name="totalPoints"
             type="String" />

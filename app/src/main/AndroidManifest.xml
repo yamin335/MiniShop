@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.mallzhub.mallowner">
+    package="com.rtchubs.talika">
     <!-- Enable instant app support -->
     <dist:module dist:instant="true" /> <!-- Declare features -->
     <uses-feature android:name="android.hardware.camera" />
@@ -30,7 +30,7 @@
     <uses-feature android:name="android.hardware.camera.ar" android:required="true"/>
 
     <application
-        android:name="com.mallzhub.mallowner.App"
+        android:name="com.rtchubs.talika.App"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
@@ -48,7 +48,7 @@
     ARCore. -->
         <meta-data android:name="com.google.ar.core" android:value="required" />
 
-        <activity android:name="com.mallzhub.mallowner.ui.SplashActivity"
+        <activity android:name="com.rtchubs.talika.ui.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme"
             android:exported="true">
@@ -74,7 +74,7 @@
             android:label="@string/leku_title_activity_location_picker"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
             android:windowSoftInputMode="adjustPan"
-            android:parentActivityName="com.mallzhub.mallowner.ui.MainActivity"
+            android:parentActivityName="com.rtchubs.talika.ui.MainActivity"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
@@ -83,7 +83,7 @@
                 android:resource="@xml/leku_searchable" />
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.mallzhub.mallowner.ui.MainActivity" />
+                android:value="com.rtchubs.talika.ui.MainActivity" />
         </activity>
 
         <meta-data
@@ -91,23 +91,23 @@
             android:value="AIzaSyAcDOA5dMt1SMMgMysGT5BczEHRBmqJdyE" />
 
         <activity
-            android:name="com.mallzhub.mallowner.ui.barcode_reader.LiveBarcodeScanningActivity"
+            android:name="com.rtchubs.talika.ui.barcode_reader.LiveBarcodeScanningActivity"
             android:theme="@style/MainTheme"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|adjustPan" />
 
         <activity
-            android:name="com.mallzhub.mallowner.ui.LoginActivity"
+            android:name="com.rtchubs.talika.ui.LoginActivity"
             android:theme="@style/MainTheme"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|adjustPan" />
         <activity
-            android:name="com.mallzhub.mallowner.ui.live_chat.LiveChatActivity"
+            android:name="com.rtchubs.talika.ui.live_chat.LiveChatActivity"
             android:theme="@style/MainTheme"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name="com.mallzhub.mallowner.ui.MainActivity"
+            android:name="com.rtchubs.talika.ui.MainActivity"
             android:clearTaskOnLaunch="true"
             android:rotationAnimation="seamless"
             android:screenOrientation="portrait"
@@ -153,7 +153,7 @@
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="barcode,face,ocr,ica" />
 
-        <receiver android:name="com.mallzhub.mallowner.SyncOnConnectivityReceiver" /> <!-- to disable default workmanager initiation -->
+        <receiver android:name="com.rtchubs.talika.SyncOnConnectivityReceiver" /> <!-- to disable default workmanager initiation -->
         <provider
             android:name="androidx.work.impl.WorkManagerInitializer"
             android:authorities="${applicationId}.workmanager-init"

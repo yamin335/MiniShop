@@ -7,13 +7,13 @@
         <import type="android.graphics.drawable.Drawable"/>
         <variable
             name="merchant"
-            type="com.mallzhub.mallowner.models.MallMerchant" />
+            type="com.rtchubs.talika.models.MallMerchant" />
         <variable
             name="imageRequestListener"
             type="com.bumptech.glide.request.RequestListener&lt;Drawable>" />
         <variable
             name="viewModel"
-            type="com.mallzhub.mallowner.ui.shops.ShopDetailViewModel" />
+            type="com.rtchubs.talika.ui.shops.ShopDetailViewModel" />
     </data>
     <RelativeLayout
         android:layout_width="match_parent"

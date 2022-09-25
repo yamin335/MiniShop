@@ -5,7 +5,7 @@
     <data class="OrderTrackHistoryListItemBinding">
         <variable
             name="item"
-            type="com.mallzhub.mallowner.models.order.OrderTrackHistory" />
+            type="com.rtchubs.talika.models.order.OrderTrackHistory" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

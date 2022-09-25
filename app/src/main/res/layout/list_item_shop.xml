@@ -8,7 +8,7 @@
         <import type="android.graphics.drawable.Drawable"/>
         <variable
             name="merchant"
-            type="com.mallzhub.mallowner.models.MallMerchant" />
+            type="com.rtchubs.talika.models.MallMerchant" />
 
         <variable
             name="imageRequestListener"

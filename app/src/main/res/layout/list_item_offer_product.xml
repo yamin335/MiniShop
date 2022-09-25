@@ -10,7 +10,7 @@
             type="String" />
         <variable
             name="item"
-            type="com.mallzhub.mallowner.models.OfferProduct" />
+            type="com.rtchubs.talika.models.OfferProduct" />
         <variable
             name="imageRequestListener"
             type="com.bumptech.glide.request.RequestListener&lt;Drawable>" />

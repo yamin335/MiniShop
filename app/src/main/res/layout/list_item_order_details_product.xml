@@ -7,7 +7,7 @@
         <import type="android.graphics.drawable.Drawable"/>
         <variable
             name="item"
-            type="com.mallzhub.mallowner.models.order.SalesDetails" />
+            type="com.rtchubs.talika.models.order.SalesDetails" />
         <variable
             name="imageUrl"
             type="String" />

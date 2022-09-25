@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.mallzhub.mallowner.ui.otp_signin.OtpSignInViewModel" />
+            type="com.rtchubs.talika.ui.otp_signin.OtpSignInViewModel" />
     </data>
 
     <RelativeLayout

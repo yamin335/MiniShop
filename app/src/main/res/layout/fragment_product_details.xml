@@ -16,7 +16,7 @@
 
         <variable
             name="viewModel"
-            type="com.mallzhub.mallowner.ui.home.ProductDetailsViewModel" />
+            type="com.rtchubs.talika.ui.home.ProductDetailsViewModel" />
 
         <variable
             name="name"
